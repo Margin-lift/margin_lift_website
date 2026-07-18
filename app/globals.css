@@ -36,7 +36,7 @@ body {
   background: var(--cream);
   color: var(--ink);
   font-family: var(--font-inter);
-  font-size: 16.5px;
+  font-size: clamp(14px, 2.5vw, 16.5px);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
@@ -101,7 +101,8 @@ h3 {
 .wrap {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 clamp(16px, 5vw, 32px);
+  width: 100%;
 }
 
 .mono {
@@ -130,20 +131,31 @@ h3 {
 .btn {
   display: inline-block;
   font-family: var(--font-plex-mono);
-  font-size: 13px;
+  font-size: clamp(11px, 2vw, 13px);
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 20px 34px;
+  padding: clamp(16px, 4vw, 20px) clamp(24px, 5vw, 34px);
   text-decoration: none;
   border: 1px solid var(--ink);
-  transition: opacity 0.15s, transform 0.15s;
+  transition: opacity 0.15s, transform 0.15s, background-color 0.15s, border-color 0.15s;
   white-space: nowrap;
   cursor: pointer;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
 }
 
-.btn:hover {
-  transform: translateY(-1px);
+.btn:active {
+  transform: translateY(0);
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .btn-solid {
@@ -174,8 +186,9 @@ h3 {
 }
 
 .btn.small {
-  padding: 13px 22px;
-  font-size: 12px;
+  padding: clamp(12px, 3vw, 13px) clamp(16px, 3vw, 22px);
+  font-size: clamp(10px, 1.8vw, 12px);
+  min-height: 44px;
 }
 
 /* Reveal animation */
@@ -198,8 +211,131 @@ h3 {
   }
 }
 
-/* Responsive */
-@media (max-width: 1020px) {
+/* Responsive breakpoints */
+/* sm: 640px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px */
+
+/* Tablets and below */
+@media (max-width: 1024px) {
+  section {
+    padding: clamp(80px, 15vw, 120px) 0;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+  }
+
+  h3 {
+    font-size: clamp(18px, 4vw, 23px);
+  }
+
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .mono {
+    font-size: clamp(10px, 2.2vw, 12.5px);
+  }
+
+  .eyebrow {
+    margin-bottom: clamp(20px, 4vw, 28px);
+  }
+}
+
+/* Small tablets */
+@media (max-width: 768px) {
+  section {
+    padding: clamp(60px, 12vw, 100px) 0;
+  }
+
+  .grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    gap: clamp(12px, 3vw, 28px);
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-arrow {
+    transform: rotate(90deg);
+    margin: clamp(8px, 2vw, 12px) 0;
+  }
+
+  .flex-col-mobile {
+    flex-direction: column;
+  }
+
+  .gap-sm {
+    gap: clamp(12px, 3vw, 20px);
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 640px) {
+  section {
+    padding: clamp(50px, 10vw, 80px) 0;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 5.5vw, 2.4rem);
+  }
+
+  h3 {
+    font-size: clamp(16px, 4.5vw, 20px);
+  }
+
+  .nav-links a:not(.btn) {
+    display: none;
+  }
+
+  .nav-inner {
+    height: 64px;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .btn {
+    width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .cta-row {
+    flex-direction: column;
+    gap: clamp(10px, 3vw, 15px);
+  }
+
+  .mono {
+    font-size: clamp(9px, 2vw, 11px);
+    letter-spacing: 0.16em;
+  }
+
+  .eyebrow {
+    margin-bottom: clamp(16px, 3vw, 24px);
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  /* Grid layouts for mobile */
   .grid-cols-3 {
     grid-template-columns: 1fr;
   }
@@ -207,18 +343,91 @@ h3 {
   .grid-cols-2 {
     grid-template-columns: 1fr;
   }
+
+  /* Improve touch targets */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+    min-height: 44px;
+    padding: 12px;
+  }
+
+  .uc-item {
+    min-height: 48px;
+    padding: 14px 16px;
+  }
 }
 
-@media (max-width: 680px) {
+/* Extra small phones */
+@media (max-width: 480px) {
+  .wrap {
+    padding: 0 clamp(12px, 4vw, 16px);
+  }
+
   section {
-    padding: 84px 0;
+    padding: clamp(40px, 8vw, 60px) 0;
   }
 
-  .nav-links a:not(.btn) {
-    display: none;
+  h1 {
+    font-size: clamp(1.5rem, 5.5vw, 2.2rem);
   }
 
-  body {
-    font-size: 16px;
+  .hero-sub {
+    font-size: clamp(14px, 3.5vw, 16px);
+  }
+
+  .btn {
+    padding: clamp(14px, 3vw, 16px) clamp(16px, 4vw, 20px);
+    font-size: clamp(10px, 1.8vw, 11px);
+  }
+
+  .hero-stats {
+    margin-top: clamp(40px, 8vw, 60px);
+    padding-top: clamp(30px, 6vw, 40px);
+  }
+
+  .hstat .big {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+  }
+
+  .hstat .cap {
+    font-size: clamp(9px, 2vw, 11px);
+    max-width: 140px;
+  }
+
+  .stat-card {
+    padding: clamp(20px, 5vw, 32px);
+  }
+
+  .stat-card .big {
+    font-size: clamp(2.2rem, 4.5vw, 3rem);
+  }
+
+  .final h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  section {
+    padding: 40px 0;
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .hero-stats {
+    margin-top: 40px;
+    padding-top: 30px;
+  }
+}
+
+/* High-resolution displays */
+@media (min-width: 1536px) {
+  .wrap {
+    max-width: 1280px;
   }
 }

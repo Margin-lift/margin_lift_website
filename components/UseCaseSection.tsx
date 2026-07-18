@@ -52,42 +52,42 @@ export default function UseCaseSection() {
   }
 
   return (
-    <section id="usecases" className="dots py-[120px]">
-      <div className="wrap max-w-[1200px] mx-auto px-8 reveal relative z-10">
+    <section id="usecases" className="dots py-[clamp(50px,10vw,120px)]">
+      <div className="wrap reveal relative z-10">
         <div className="mono eyebrow">04&nbsp;&mdash;&nbsp;Use-case selector</div>
-        <div className="sec-head mb-20">
+        <div className="sec-head mb-[clamp(40px,8vw,80px)]">
           <h2>
             Where is your money going?{' '}
             <span className="ghost">Pick what matches your business.</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-4 gap-6 lg:grid-cols-2 md:grid-cols-1">
+        <div className="grid grid-cols-4 gap-[clamp(12px,3vw,24px)] lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1">
           {categories.map((cat, idx) => (
             <div
               key={idx}
-              className="border border-line p-10"
+              className="border border-line p-[clamp(20px,4vw,40px)]"
             >
-              <h3 className="mb-2.5">{cat.title}</h3>
-              <span className="mono block text-gold mb-4">
+              <h3 className="mb-[clamp(8px,2vw,10px)]">{cat.title}</h3>
+              <span className="mono block text-gold mb-[clamp(12px,2vw,16px)] text-[clamp(9px,2vw,12px)]">
                 {cat.mono}
               </span>
-              <p className="text-ink-soft text-[15px] leading-[1.7] mb-7">
+              <p className="text-ink-soft text-[clamp(13px,3vw,15px)] leading-[1.7] mb-[clamp(16px,3vw,28px)]">
                 {cat.desc}
               </p>
-              <div>
+              <div className="space-y-[clamp(8px,2vw,14px)]">
                 {cat.items.map((item) => (
                   <div
                     key={item.id}
                     onClick={() => toggleItem(item.id)}
-                    className={`flex gap-3.5 items-start bg-[#FCFAF4] border px-4.5 py-4 mb-3.5 cursor-pointer text-[15px] font-medium leading-[1.45] transition-colors ${
+                    className={`flex gap-[clamp(10px,2vw,14px)] items-start bg-[#FCFAF4] border px-[clamp(14px,3vw,18px)] py-[clamp(10px,2vw,14px)] mb-0 cursor-pointer text-[clamp(13px,3vw,15px)] font-medium leading-[1.45] transition-colors min-h-[44px] sm:min-h-[48px] ${
                       selectedItems.has(item.id)
                         ? 'border-terracotta'
                         : 'border-line hover:border-terracotta'
                     }`}
                   >
                     <div
-                      className={`flex-none w-[19px] h-[19px] border-[1.5px] flex items-center justify-center text-[13px] mt-0.5 transition-colors ${
+                      className={`flex-none w-[clamp(18px,4vw,19px)] h-[clamp(18px,4vw,19px)] border-[1.5px] flex items-center justify-center text-[clamp(11px,2vw,13px)] mt-0.5 transition-colors flex-shrink-0 ${
                         selectedItems.has(item.id)
                           ? 'bg-terracotta border-terracotta text-cream'
                           : 'border-ink-soft'
@@ -95,7 +95,7 @@ export default function UseCaseSection() {
                     >
                       {selectedItems.has(item.id) ? '✓' : ''}
                     </div>
-                    <span>{item.label}</span>
+                    <span className="flex-1">{item.label}</span>
                   </div>
                 ))}
               </div>
@@ -103,17 +103,17 @@ export default function UseCaseSection() {
           ))}
 
           {/* Column 4 - stacked */}
-          <div className="col-span-1 lg:col-span-2 md:col-span-1 flex flex-col gap-6">
+          <div className="col-span-1 lg:col-span-2 md:col-span-1 sm:col-span-1 flex flex-col gap-[clamp(12px,3vw,24px)]">
             {/* Money left on table */}
-            <div className="border border-line p-10">
-              <h3 className="mb-3.5">Money left on the table</h3>
-              <span className="mono block text-gold mb-4">
+            <div className="border border-line p-[clamp(20px,4vw,40px)]">
+              <h3 className="mb-[clamp(8px,2vw,14px)]">Money left on the table</h3>
+              <span className="mono block text-gold mb-[clamp(12px,2vw,16px)] text-[clamp(9px,2vw,12px)]">
                 What you sell
               </span>
-              <p className="text-ink-soft text-[15px] leading-[1.7] mb-7">
+              <p className="text-ink-soft text-[clamp(13px,3vw,15px)] leading-[1.7] mb-[clamp(16px,3vw,28px)]">
                 Same volume, better realisation.
               </p>
-              <div>
+              <div className="space-y-[clamp(8px,2vw,14px)]">
                 {[
                   { id: 'product-mix', label: 'Product mix and realisation' },
                   { id: 'customer-comms', label: 'Customer communication load' },
@@ -121,14 +121,14 @@ export default function UseCaseSection() {
                   <div
                     key={item.id}
                     onClick={() => toggleItem(item.id)}
-                    className={`flex gap-3.5 items-start bg-[#FCFAF4] border px-4.5 py-4 mb-3.5 cursor-pointer text-[15px] font-medium leading-[1.45] transition-colors ${
+                    className={`flex gap-[clamp(10px,2vw,14px)] items-start bg-[#FCFAF4] border px-[clamp(14px,3vw,18px)] py-[clamp(10px,2vw,14px)] mb-0 cursor-pointer text-[clamp(13px,3vw,15px)] font-medium leading-[1.45] transition-colors min-h-[44px] sm:min-h-[48px] ${
                       selectedItems.has(item.id)
                         ? 'border-terracotta'
                         : 'border-line hover:border-terracotta'
                     }`}
                   >
                     <div
-                      className={`flex-none w-[19px] h-[19px] border-[1.5px] flex items-center justify-center text-[13px] mt-0.5 transition-colors ${
+                      className={`flex-none w-[clamp(18px,4vw,19px)] h-[clamp(18px,4vw,19px)] border-[1.5px] flex items-center justify-center text-[clamp(11px,2vw,13px)] mt-0.5 transition-colors flex-shrink-0 ${
                         selectedItems.has(item.id)
                           ? 'bg-terracotta border-terracotta text-cream'
                           : 'border-ink-soft'
@@ -136,16 +136,16 @@ export default function UseCaseSection() {
                     >
                       {selectedItems.has(item.id) ? '✓' : ''}
                     </div>
-                    <span>{item.label}</span>
+                    <span className="flex-1">{item.label}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Something else */}
-            <div className="border border-line p-10 flex flex-col flex-grow">
-              <h3 className="mb-3.5">Something else</h3>
-              <p className="text-ink-soft text-[15px] leading-[1.7] mb-7">
+            <div className="border border-line p-[clamp(20px,4vw,40px)] flex flex-col flex-grow">
+              <h3 className="mb-[clamp(8px,2vw,14px)]">Something else</h3>
+              <p className="text-ink-soft text-[clamp(13px,3vw,15px)] leading-[1.7] mb-[clamp(16px,3vw,28px)]">
                 A cost we haven't listed is hurting you. Describe it in one line and we'll tell you honestly whether an AI agent can attack it.
               </p>
               <input
@@ -153,7 +153,7 @@ export default function UseCaseSection() {
                 placeholder="e.g. rework approvals eat two days a week"
                 value={customText}
                 onChange={(e) => setCustomText(e.target.value)}
-                className="w-full border border-line bg-[#FCFAF4] px-4.5 py-4 font-inter text-[15px] text-ink outline-none focus:border-terracotta"
+                className="w-full border border-line bg-[#FCFAF4] px-[clamp(14px,3vw,18px)] py-[clamp(10px,2vw,14px)] font-inter text-[clamp(13px,3vw,15px)] text-ink outline-none focus:border-terracotta min-h-[44px] sm:min-h-[48px]"
               />
             </div>
           </div>

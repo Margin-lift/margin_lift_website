@@ -2,16 +2,16 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <header className="hero dots pb-0 pt-[130px]">
-      <div className="wrap max-w-[1200px] mx-auto px-8 text-center relative z-10">
-        <div className="mono eyebrow text-gold mb-14">AI agents for margin performance</div>
-        <h1 className="font-serif font-bold text-[clamp(3rem,7.2vw,5.4rem)] mb-11">
+    <header className="hero dots pb-0 pt-[clamp(60px,10vw,130px)]">
+      <div className="wrap text-center relative z-10">
+        <div className="mono eyebrow text-gold">AI agents for margin performance</div>
+        <h1 className="font-serif font-bold text-[clamp(1.8rem,7vw,5.4rem)] mb-[clamp(24px,4vw,44px)]">
           The market sets your price.<br />Operations set your profit.
         </h1>
-        <p className="max-w-[700px] mx-auto mb-13 text-[18.5px] leading-[1.9] text-ink-soft">
+        <p className="max-w-[700px] mx-auto mb-[clamp(20px,4vw,32px)] text-[clamp(14px,3.5vw,18.5px)] leading-[1.8] text-ink-soft">
           In high-volume businesses, profit is made or lost in the small inefficiencies no one sees clearly enough to fix every day. marginlift deploys AI agents inside the systems your team already uses — your ERP, your spreadsheets, your inboxes — so margin improves without rolling out another tool.
         </p>
-        <div className="flex gap-5 justify-center flex-wrap mb-24">
+        <div className="cta-row flex gap-[clamp(10px,3vw,20px)] justify-center flex-wrap mb-[clamp(40px,6vw,60px)]">
           <Link href="/audit" className="btn btn-solid">
             Run the free AI opportunity audit&nbsp;&nbsp;»
           </Link>
@@ -20,21 +20,21 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="hero-stats mt-24 border-t border-line pt-16 pb-22 flex justify-center items-center gap-14 flex-wrap">
-          <div className="flex items-center gap-5 text-left">
-            <div className="font-serif font-bold text-[clamp(2.6rem,4.5vw,3.4rem)] letter-spacing-[-.03em] text-terracotta leading-none">
+        <div className="hero-stats mt-[clamp(40px,8vw,96px)] border-t border-line pt-[clamp(32px,6vw,64px)] pb-[clamp(44px,8vw,88px)] flex justify-center items-center gap-[clamp(12px,3vw,56px)] flex-wrap">
+          <div className="flex items-center gap-[clamp(12px,3vw,20px)] text-left">
+            <div className="font-serif font-bold text-[clamp(2rem,4.5vw,3.4rem)] letter-spacing-[-.03em] text-terracotta leading-none">
               −10%
             </div>
-            <div className="font-mono text-[11.5px] letter-spacing-[0.16em] uppercase text-ink-soft leading-[1.9] max-w-[190px]">
+            <div className="font-mono text-[clamp(9px,2vw,11.5px)] letter-spacing-[0.16em] uppercase text-ink-soft leading-[1.7] max-w-[140px] sm:max-w-[190px]">
               Hidden coordination cost
             </div>
           </div>
-          <div className="font-serif text-[34px] text-ink-soft">→</div>
-          <div className="flex items-center gap-5 text-left">
-            <div className="font-serif font-bold text-[clamp(2.6rem,4.5vw,3.4rem)] letter-spacing-[-.03em] text-terracotta leading-none">
+          <div className="hero-arrow font-serif text-[clamp(24px,5vw,34px)] text-ink-soft hidden sm:block">→</div>
+          <div className="flex items-center gap-[clamp(12px,3vw,20px)] text-left">
+            <div className="font-serif font-bold text-[clamp(2rem,4.5vw,3.4rem)] letter-spacing-[-.03em] text-terracotta leading-none">
               +25%
             </div>
-            <div className="font-mono text-[11.5px] letter-spacing-[0.16em] uppercase text-ink-soft leading-[1.9] max-w-[190px]">
+            <div className="font-mono text-[clamp(9px,2vw,11.5px)] letter-spacing-[0.16em] uppercase text-ink-soft leading-[1.7] max-w-[140px] sm:max-w-[190px]">
               Profit before tax, or more
             </div>
           </div>
