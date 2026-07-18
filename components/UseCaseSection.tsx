@@ -2,11 +2,6 @@
 
 import { useState } from 'react'
 
-interface UseCase {
-  id: string
-  label: string
-}
-
 const categories = [
   {
     title: 'Money stuck outside the business',

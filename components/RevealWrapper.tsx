@@ -1,10 +1,8 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 export default function RevealWrapper({ children }: { children: React.ReactNode }) {
-  const revealRefs = useRef<(IntersectionObserver | null)[]>([])
-
   useEffect(() => {
     const io = new IntersectionObserver(
       (entries) => {
