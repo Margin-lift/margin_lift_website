@@ -9,15 +9,12 @@ export default function Hero() {
           The market sets your price.<br />Operations set your profit.
         </h1>
         <p className="max-w-[700px] mx-auto mb-[clamp(20px,4vw,32px)] text-[clamp(14px,3.5vw,18.5px)] leading-[1.8] text-ink-soft">
-          In high-volume businesses, profit is made or lost in the small inefficiencies no one sees clearly enough to fix every day. marginlift deploys AI agents inside the systems your team already uses — your ERP, your spreadsheets, your inboxes — so margin improves without rolling out another tool.
+          We're the end-to-end partner that helps companies turn frontier models into measurable business results.
         </p>
         <div className="cta-row flex gap-[clamp(10px,3vw,20px)] justify-center flex-wrap mb-[clamp(40px,6vw,60px)]">
           <Link href="/audit" className="btn btn-solid">
-            Run the free AI opportunity audit&nbsp;&nbsp;»
+            Get Started&nbsp;&nbsp;→
           </Link>
-          <a href="#usecases" className="btn btn-ghost">
-            See where you're leaking money
-          </a>
         </div>
 
         <div className="hero-stats mt-[clamp(40px,8vw,96px)] border-t border-line pt-[clamp(32px,6vw,64px)] pb-[clamp(44px,8vw,88px)] flex justify-center items-center gap-[clamp(12px,3vw,56px)] flex-wrap">
