@@ -7,9 +7,9 @@ export default function ProblemSection() {
           <h2>Every cost line in your business has two layers.</h2>
         </div>
 
-        <div className="grid grid-cols-[7fr_5fr] gap-[clamp(32px,6vw,88px)] lg:grid-cols-1 md:gap-[clamp(24px,5vw,56px)] items-start">
+        <div className="flex gap-[clamp(24px,5vw,80px)] items-start">
           {/* Left Column - Text */}
-          <div className="flex flex-col justify-between gap-[clamp(20px,4vw,32px)]">
+          <div className="flex-1 min-w-0 flex flex-col justify-start gap-[clamp(20px,4vw,32px)]">
             <div className="space-y-[clamp(20px,4vw,44px)]">
               <div className="border-l-2 border-line-dark pl-[clamp(16px,4vw,28px)] pt-[clamp(12px,2vw,16px)]">
                 <span className="mono block mb-[clamp(8px,2vw,14px)] text-cream-dark text-[clamp(9px,2vw,12px)]">Layer 1 — Direct cost</span>
@@ -32,7 +32,7 @@ export default function ProblemSection() {
           </div>
 
           {/* Right Column - Stat Card */}
-          <div className="border border-line-dark bg-cream-dim p-[clamp(20px,4vw,56px)] flex flex-col justify-between gap-[clamp(20px,4vw,44px)]">
+          <div className="flex-none w-[320px] sm:w-[280px] border border-line-dark bg-cream-dim p-[clamp(20px,4vw,48px)] flex flex-col justify-between gap-[clamp(20px,4vw,44px)]">
             <div>
               <div className="font-serif font-bold letter-spacing-[-.03em] text-[clamp(2.2rem,5vw,4.2rem)] leading-none text-cream mb-[clamp(12px,3vw,18px)]">
                 1.5–5<span className="text-terracotta text-[0.55em] font-semibold">%</span>
