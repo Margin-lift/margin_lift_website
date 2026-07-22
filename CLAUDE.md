@@ -4,56 +4,62 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Marketing website for **marginlift™** — an AI company selling vertical agents that reduce hidden "coordination cost" for low-margin, high-volume businesses. Built with Next.js 15 + App Router, Tailwind CSS, and TypeScript.
+Marketing website for **marginlift™** — an AI company selling vertical agents that find, measure, and automate out the hidden "coordination cost" in low-margin, high-volume businesses. Built with Next.js 15 + App Router, Tailwind CSS, and TypeScript.
+
+The canonical design is `references/marginlift-preview_23.html` — a single-file HTML/CSS preview. The Next.js app is a faithful, component-modularised port of it. **When changing design or copy, diff against that reference file** to avoid drift.
 
 ## Commands
 
 ```bash
 npm install              # Install dependencies
 npm run dev              # Start dev server (http://localhost:3000)
-npm run build            # Build for production
+npm run build            # Build for production (also type-checks)
 npm start                # Run production build
-npm run lint             # Run ESLint
+npm run lint             # ESLint (needs interactive first-time setup)
 ```
 
 ## Architecture
 
 **One React component per section** — all live in `/components`:
-- `Navigation.tsx` — sticky header with nav links and CTA
-- `Hero.tsx` — headline, sub-copy, stat strip
-- `ProblemSection.tsx` — "01 The problem" (dark)
-- `ApproachSection.tsx` — "02 Our approach" (light)
-- `AuditSection.tsx` — "03 The audit" (dark)
-- `UseCaseSection.tsx` — "04 Use-case selector" (light); **client component** for checkbox interactivity
-- `FinalCTA.tsx` — "You've already squeezed..." + footer (dark)
-- `RevealWrapper.tsx` — **client component** managing scroll-reveal IntersectionObserver for all sections
+- `Navigation.tsx` — sticky blurred header: brand, nav links, "Run Audit" CTA
+- `Hero.tsx` — headline, subline, CTA; embeds `HeroMockup`
+- `HeroMockup.tsx` — animated "margin audit" browser mockup (agent progress bar, leak rows, recoverable total)
+- `ProblemSection.tsx` — "01 — The problem": two cost layers + numbers card (`.sec-alt`)
+- `ApproachSection.tsx` — "02 — Our approach": 3 cards + integrations row
+- `SimulatorSection.tsx` — "03 — The math": **client component**; 3 range sliders → live profit calc
+- `UseCaseSection.tsx` — "04 — Use-case selector": 6 static use-case cards
+- `ClosingSection.tsx` — closing headline + "Start NOW" CTA (`#run-audit`)
+- `Footer.tsx` — brand + tagline
+- `ContactModal.tsx` — **client component**; the audit contact form + success state
+- `RevealWrapper.tsx` — **client component**; scroll-reveal IntersectionObserver for all `.rv` elements
+
+**Data & helpers** in `/lib`:
+- `content.ts` — all section copy/data (single source of truth; components stay presentational)
+- `format.ts` — `formatRupees()` Indian-locale currency formatter (Cr / L / K), used by the simulator
 
 **Routes:**
-- `/` — homepage (all sections stacked)
-- `/audit` — audit form page (placeholder; needs Typeform/Tally/custom embed)
+- `/` — the entire site is a single stacked page (no sub-routes). The audit CTA opens `ContactModal`, not a separate page.
 
-**Styling:**
-- Tailwind + CSS variables (defined in `globals.css`): `--cream`, `--ink`, `--terracotta`, `--gold`, etc.
-- Fonts loaded via `next/font/google` in `layout.tsx`: Archivo (headings), Inter (body), IBM Plex Mono (labels/mono).
-- Dot grid background + horizontal fade mask via CSS in `globals.css` (`.dots` class).
-- Responsive breakpoints: 1020px (2-col → 1-col), 680px (hide nav links, adjust sections).
-- `@media (prefers-reduced-motion)` respected for `.reveal` animation.
+## The contact modal
 
-**Design tokens** (see `/app/globals.css` for values):
-- Colors: cream/cream-deep (light bg), ink (dark), terracotta/terracotta-deep (accent), gold (labels), line/line-dark (borders).
-- On dark sections: text switches to cream, borders to cream at 16% opacity, panels to cream at 5% opacity.
+There is **no `/audit` route**. Every CTA is a plain element with a `data-contact` attribute (e.g. `<a href="#run-audit" className="btn" data-contact>`). `ContactModal` is a single client component mounted once in `page.tsx` that uses **document-level click delegation**: any click bubbling from a `[data-contact]` element opens it. This keeps CTAs as server-rendered links and the modal logic in one place. Esc and backdrop click close it; submit swaps the form for a success panel. The form is presentation-only (no backend wired).
 
-**Interactive elements:**
-- `.uc-item` checkbox items in UseCaseSection — toggle `.on` class on click (styled with checked state).
-- Custom text input in "Something else" card — value captured in `customText` state.
-- Both are currently presentation-only (no backend wired).
-- Primary CTAs are `mailto:` links to `hello@marginlift.ai` or navigation to `/audit`.
+## Styling
+
+- **All section styling is hand-written CSS in `app/globals.css`**, ported verbatim from the reference preview (tokens, layout classes, keyframes). Components apply these classes; only small one-off overrides use inline `style`. Tailwind utilities are available but rarely needed.
+- Design tokens are CSS variables in `globals.css`:
+  - Surfaces: `--paper`, `--card`, `--stone-soft`, `--stone-deep`, `--hairline`
+  - Text: `--ink`, `--ink-2`, `--muted`, `--faint`
+  - Accents: `--indigo`/`--indigo-light`/`--indigo-tint` (primary), `--sage` (positive), `--clay` (leak/negative)
+- Fonts via `next/font/google` in `layout.tsx`, exposed as CSS vars: `--font-poppins` (headings), `--font-inter` (body), `--font-roboto-mono` (labels/mono).
+- Backgrounds: `.dot-grid` (masked dot field), `.dot-grid-tight`, `.field` (gradient panel), `.glow`.
+- Responsive breakpoints (in `globals.css`): 900px (2-col grids → 1-col), 820px (use-case grid), 760px (hide nav links), 640px (modal alignment).
+- `@media (prefers-reduced-motion: reduce)` disables all animations and reveals content.
 
 ## Conventions
 
-- **Client components** only where needed (UseCaseSection for state + clicks, RevealWrapper for IntersectionObserver).
-- **Server components** by default for all section/layout components.
-- Responsive grid utilities used inline (`grid-cols-3 lg:grid-cols-1 md:grid-cols-1`); adjust breakpoints in `tailwind.config.ts` if needed.
-- Color/spacing tokens via Tailwind extended theme — edit `tailwind.config.ts` to add/change them.
-- Typography scale handled with `clamp()` for fluid scaling.
-- All animations respect `prefers-reduced-motion`.
+- **Client components** only where needed: `SimulatorSection` (slider state), `ContactModal` (modal state + delegation), `RevealWrapper` (IntersectionObserver). Everything else is a server component.
+- **Edit copy/data in `lib/content.ts`**, not inside JSX.
+- Change brand colors/spacing via the CSS variables in `globals.css`, not per-component.
+- Scroll-reveal: add the `rv` class to any element; `RevealWrapper` adds `.in` when it scrolls into view. (Note: the use-case recovered amount uses `.rv-amt`, a distinct class, so it is not reveal-animated.)
+- Keep the app in sync with `references/marginlift-preview_23.html`.

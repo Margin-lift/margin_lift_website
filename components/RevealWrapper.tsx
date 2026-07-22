@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 
+/** Adds `.in` to every `.rv` element as it scrolls into view (scroll-reveal). */
 export default function RevealWrapper({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -13,15 +14,13 @@ export default function RevealWrapper({ children }: { children: React.ReactNode 
           }
         })
       },
-      { threshold: 0.1 }
+      { rootMargin: '-60px' }
     )
 
-    const reveals = document.querySelectorAll('.reveal')
+    const reveals = document.querySelectorAll('.rv')
     reveals.forEach((el) => io.observe(el))
 
-    return () => {
-      reveals.forEach((el) => io.unobserve(el))
-    }
+    return () => io.disconnect()
   }, [])
 
   return <>{children}</>

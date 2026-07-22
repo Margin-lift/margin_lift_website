@@ -1,28 +1,32 @@
 import type { Metadata } from 'next'
-import { Archivo, Inter, IBM_Plex_Mono } from 'next/font/google'
+import { Poppins, Inter, Roboto_Mono } from 'next/font/google'
 import './globals.css'
 
-const archivo = Archivo({
+const poppins = Poppins({
   subsets: ['latin'],
   weight: ['500', '600', '700'],
-  variable: '--font-archivo',
+  variable: '--font-poppins',
+  display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-inter',
+  display: 'swap',
 })
 
-const ibmPlexMono = IBM_Plex_Mono({
+const robotoMono = Roboto_Mono({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-plex-mono',
+  weight: ['400', '500', '600'],
+  variable: '--font-roboto-mono',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
   title: 'marginlift — The market sets your price. Operations set your profit.',
-  description: 'AI agents that work behind your existing tools to improve margin — no new software, no new logins, no rip-and-replace.',
+  description:
+    'AI agents for margin performance. Vertical agents that find, measure, and automate out the hidden coordination cost inside low-margin, high-volume businesses.',
 }
 
 export default function RootLayout({
@@ -31,10 +35,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
-      <body>
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${poppins.variable} ${inter.variable} ${robotoMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
   )
 }

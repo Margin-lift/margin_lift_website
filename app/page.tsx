@@ -2,9 +2,11 @@ import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
 import ProblemSection from '@/components/ProblemSection'
 import ApproachSection from '@/components/ApproachSection'
-import AuditSection from '@/components/AuditSection'
+import SimulatorSection from '@/components/SimulatorSection'
 import UseCaseSection from '@/components/UseCaseSection'
-import FinalCTA from '@/components/FinalCTA'
+import ClosingSection from '@/components/ClosingSection'
+import Footer from '@/components/Footer'
+import ContactModal from '@/components/ContactModal'
 import RevealWrapper from '@/components/RevealWrapper'
 
 export default function Home() {
@@ -14,9 +16,11 @@ export default function Home() {
       <Hero />
       <ProblemSection />
       <ApproachSection />
-      <AuditSection />
+      <SimulatorSection />
       <UseCaseSection />
-      <FinalCTA />
+      <ClosingSection />
+      <Footer />
+      <ContactModal />
     </RevealWrapper>
   )
 }
