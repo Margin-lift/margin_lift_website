@@ -119,7 +119,7 @@ export default function ContactModal() {
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
                   <path
                     d="M8 15.5l4.5 4.5L22 9.5"
-                    stroke="#3D4CC0"
+                    stroke="#C2600D"
                     strokeWidth="2.4"
                     strokeLinecap="round"
                     strokeLinejoin="round"

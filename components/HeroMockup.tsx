@@ -50,7 +50,7 @@ export default function HeroMockup() {
                   fontFamily: 'var(--font-mono)',
                   fontSize: '.62rem',
                   fontWeight: 600,
-                  color: 'var(--indigo)',
+                  color: 'var(--saffron)',
                 }}
               >
                 {heroMock.agent.progress}

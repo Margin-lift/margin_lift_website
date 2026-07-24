@@ -6,10 +6,10 @@ import { formatRupees } from '@/lib/format'
 
 const { sliders } = simulator
 
-/** Paints the filled portion of a range track (indigo up to value, stone after). */
+/** Paints the filled portion of a range track (saffron up to value, stone after). */
 function trackBackground(value: number, min: number, max: number) {
   const p = ((value - min) / (max - min)) * 100
-  return `linear-gradient(to right,#3D4CC0 0%,#3D4CC0 ${p}%,#E3DED2 ${p}%,#E3DED2 100%)`
+  return `linear-gradient(to right,#C2600D 0%,#C2600D ${p}%,#E3DED2 ${p}%,#E3DED2 100%)`
 }
 
 export default function SimulatorSection() {

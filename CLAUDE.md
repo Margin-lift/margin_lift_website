@@ -50,7 +50,7 @@ There is **no `/audit` route**. Every CTA is a plain element with a `data-contac
 - Design tokens are CSS variables in `globals.css`:
   - Surfaces: `--paper`, `--card`, `--stone-soft`, `--stone-deep`, `--hairline`
   - Text: `--ink`, `--ink-2`, `--muted`, `--faint`
-  - Accents: `--indigo`/`--indigo-light`/`--indigo-tint` (primary), `--sage` (positive), `--clay` (leak/negative)
+  - Accents: `--saffron`/`--saffron-light`/`--saffron-tint` (primary), `--sage` (positive), `--clay` (leak/negative)
 - Fonts via `next/font/google` in `layout.tsx`, exposed as CSS vars: `--font-poppins` (headings), `--font-inter` (body), `--font-roboto-mono` (labels/mono).
 - Backgrounds: `.dot-grid` (masked dot field), `.dot-grid-tight`, `.field` (gradient panel), `.glow`.
 - Responsive breakpoints (in `globals.css`): 900px (2-col grids → 1-col), 820px (use-case grid), 760px (hide nav links), 640px (modal alignment).
